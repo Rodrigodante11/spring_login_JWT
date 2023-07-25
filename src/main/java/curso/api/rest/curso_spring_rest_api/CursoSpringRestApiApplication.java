@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /*
-@EntityScan(basePackages = {"curso.api.rest.model"})
+
 @ComponentScan(basePackages = {"curso.*"})
 @EnableJpaRepositories(basePackages = {"curso.api.rest.repositoy"})
 @EnableTransactionManagement
 @EnableWebMvc
 @EnableAutoConfiguration
+@RestController
 */
 
+@ComponentScan(basePackages = {"curso.*"})
+@EntityScan(basePackages = {"curso.api.rest.model"}) // Cria as Tabelas Automaticamente
 @SpringBootApplication
-@RestController
 public class CursoSpringRestApiApplication {
 
 	public static void main(String[] args) {
