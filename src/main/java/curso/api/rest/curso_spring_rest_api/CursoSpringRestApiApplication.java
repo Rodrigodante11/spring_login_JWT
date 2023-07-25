@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @RestController
 */
 
-@ComponentScan(basePackages = {"curso.*"})
+@ComponentScan(basePackages = {"curso.*"})  // procura o controller , repository ... dentro de curso.* , nao o Padrao apenas dentro de (curso_spring_rest_api)
 @EntityScan(basePackages = {"curso.api.rest.model"}) // Cria as Tabelas Automaticamente
 @SpringBootApplication
 public class CursoSpringRestApiApplication {
