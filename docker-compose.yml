@@ -1,0 +1,21 @@
+# Use postgres/example user/password credentials
+# docker-compose up
+version: '3'
+
+services:
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: curso-api-rest-spring
+    ports:
+      - "5441:5432"  # - local:docker
+
+    volumes: # aonde ficara os dados apos derrubar o container
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:
+
+
