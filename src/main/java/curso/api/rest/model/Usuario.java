@@ -1,9 +1,6 @@
 package curso.api.rest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,11 +13,25 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false ,length = 100)
     private String login;
 
+    @Column(nullable = false ,length = 100)
     private String senha;
 
+    @Column(nullable = false ,length = 100)
     private String nome;
+
+    public Usuario() {
+
+    }
+
+    public Usuario(Long id, String login, String senha, String nome) {
+        this.id = id;
+        this.login = login;
+        this.senha = senha;
+        this.nome = nome;
+    }
 
     public Long getId() {
         return id;

@@ -1,21 +1,36 @@
 package curso.api.rest.controller;
 
+import curso.api.rest.model.Usuario;
+import curso.api.rest.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuario")
 public class IndexController {
 
+    @Autowired
+    UsuarioRepository usuarioRepository;
+
+    @GetMapping( value = "/{id}" , produces = "application/json")
+    public ResponseEntity init(@PathVariable (value = "id")  Long id){
+
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+
+        return new ResponseEntity(usuario.get() , HttpStatus.OK);
+    }
+
     @GetMapping( value = "/" , produces = "application/json")
-    public ResponseEntity init(@RequestParam (value = "nome", defaultValue = "nome não informado") String nome){
-        System.out.println(nome);
-        return new ResponseEntity("Ola " +nome + " Rest Spring boot" , HttpStatus.OK);
+    public ResponseEntity<List<Usuario>> usuario(){
+
+        List<Usuario> list = (List<Usuario>) usuarioRepository.findAll();
+
+        return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
+
     }
 }
