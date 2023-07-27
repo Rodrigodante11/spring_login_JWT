@@ -2,6 +2,8 @@ package curso.api.rest.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +23,9 @@ public class Usuario implements Serializable {
 
     @Column(nullable = false ,length = 100)
     private String nome;
+
+    @OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Telefone> telefones = new ArrayList<>();
 
     public Usuario() {
 
