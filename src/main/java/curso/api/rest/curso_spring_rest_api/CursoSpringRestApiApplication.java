@@ -10,15 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-/*
-
-@ComponentScan(basePackages = {"curso.*"})
-@EnableJpaRepositories(basePackages = {"curso.api.rest.repositoy"})
-@EnableTransactionManagement
-@EnableWebMvc
-@EnableAutoConfiguration
-@RestController
-*/
 
 @EnableJpaRepositories(basePackages = "curso.api.rest.repository")
 @ComponentScan(basePackages = {"curso.*"})  // procura o controller , repository ... dentro de curso.* , nao o Padrao apenas dentro de (curso_spring_rest_api)
