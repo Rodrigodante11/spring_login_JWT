@@ -1,5 +1,7 @@
 package curso.api.rest.model;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,7 @@ public class Telefone {
     @Column(nullable = false ,length = 20)
     private String numero;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id" , nullable = false)
     private Usuario usuario;

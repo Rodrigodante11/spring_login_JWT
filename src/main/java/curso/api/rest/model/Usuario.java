@@ -24,8 +24,10 @@ public class Usuario implements Serializable {
     @Column(nullable = false ,length = 100)
     private String nome;
 
+
     @OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Telefone> telefones = new ArrayList<>();
+
 
     public Usuario() {
 
@@ -68,6 +70,14 @@ public class Usuario implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     @Override
